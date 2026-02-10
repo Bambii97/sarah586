@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sarah 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      background: #ffe0eb;
+      overflow: hidden;
+    }
+
+    /* Cœurs animés */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(-45deg);
+      animation: float 6s linear infinite;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+    .heart:before { top: -10px; left: 0; }
+    .heart:after { left: 10px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(-45deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(-45deg); opacity: 0; }
+    }
+
+    .letter {
+      position: relative;
+      z-index: 10;
+      max-width: 500px;
+      background: rgba(255,255,255,0.9);
+      padding: 50px 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      color: #ff4f81;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin: 15px 0;
+      color: #333;
+    }
+
+    .question {
+      font-size: 1.4em;
+      margin-top: 25px;
+      font-weight: bold;
+      color: #ff4f81;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 35px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      border: none;
+      background: #ff4f81;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    button:hover {
+      background: #ff79a6;
+      transform: scale(1.05);
+    }
+
+    .final {
+      font-size: 1.5em;
+      color: #ff4f81;
+      margin-top: 25px;
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-style: italic;
+      color: #ff4f81;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Cœurs flottants -->
+  <div id="hearts"></div>
+
+  <div class="letter" id="letter">
+    <h1>Sarah 💖</h1>
+    <p>Il existe des distances qui séparent,</p>
+    <p>et d’autres qui rapprochent les cœurs.</p>
+    <p>Malgré les kilomètres, ta présence est constante.<br>
+    Douce, élégante, évidente.</p>
+
+    <div class="question">Veux-tu être ma Valentine ?</div>
+    <button id="yes">Oui 💌</button>
+  </div>
+
+  <script>
+    // Animation cœurs
+    const heartsContainer = document.getElementById('hearts');
+    for(let i=0;i<30;i++){
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random()*100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random()*4 + 's';
+      heart.style.width = heart.style.height = 10 + Math.random()*20 + 'px';
+      heartsContainer.appendChild(heart);
+    }
+
+    // Bouton Oui
+    const yesBtn = document.getElementById("yes");
+    const letter = document.getElementById("letter");
+
+    yesBtn.addEventListener("click", () => {
+      letter.innerHTML = `
+        <h1>Sarah 💖</h1>
+        <div class="final">
+          🤍 La distance n’a jamais été un obstacle.<br>
+          Seulement une preuve que ce que je ressens pour toi traverse tout.
+        </div>
+        <div class="signature">— Andrianina</div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
